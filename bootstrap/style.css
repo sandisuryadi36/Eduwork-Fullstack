@@ -1,0 +1,8 @@
+.jumbotron {
+    background-image: url(./bg-top.jpg);
+    background-size: cover;
+    background-position: bottom;
+    min-height: 75vh;
+    height: fit-content;
+    width: 100%;
+}
