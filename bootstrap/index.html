@@ -42,7 +42,8 @@
     </nav>
 
     <!-- Top cover section -->
-    <div class="container-fluid top-cover p-5 d-flex flex-column gap-2 justify-content-center align-items-center text-center">
+    <div
+        class="container-fluid top-cover p-5 d-flex flex-column gap-2 justify-content-center align-items-center text-center">
         <h1>Sandi Suryadi</h1>
         <p class="fs-3 fst-italic">[ Web Developer ]</p>
         <button class="btn-success rounded-3 ps-3 pe-3 pt-1 pb-1 fs-4 shadow-lg">CONTACT</button>
@@ -51,7 +52,9 @@
     <!-- Biografi setion -->
     <div class="container p-4 text-center">
         <h1>Biografi</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum distinctio neque, vitae ullam dolorum fuga omnis eum molestiae asperiores pariatur quidem, repudiandae debitis ipsam rerum facilis laborum nulla dolores libero aspernatur dignissimos hic sit? Aliquam commodi quasi quas nostrum similique?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum distinctio neque, vitae ullam dolorum fuga omnis
+            eum molestiae asperiores pariatur quidem, repudiandae debitis ipsam rerum facilis laborum nulla dolores
+            libero aspernatur dignissimos hic sit? Aliquam commodi quasi quas nostrum similique?</p>
     </div>
 
     <!-- Skills section -->
@@ -92,12 +95,23 @@
             </div>
         </div>
     </div>
-    
+
     <!-- contact section -->
     <div class="container p-4 text-center">
         <h1>Contact Me</h1>
+        <div class="container-fluid d-flex justify-content-center">
+            <form class="d-flex flex-column gap-2 col-7">
+                <label class="text-start" for="name">Name</label>
+                <input class="bg-dark border-light text-light" type="text" name="name" placeholder="Write your name">
+                <label class="text-start" for="email">Email</label>
+                <input class="bg-dark border-light text-light" type="email" name="email" placeholder="your email here">
+                <label class="text-start" for="message">Message</label>
+                <textarea class="bg-dark border-light text-light" name="message" id="" cols="auto" rows="4"></textarea>
+                <input class="btn-success col-3 align-self-center m-2" type="submit" value="Submit">
+            </form>
+        </div>
     </div>
-    
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
