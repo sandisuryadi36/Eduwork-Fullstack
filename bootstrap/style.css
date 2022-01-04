@@ -1,8 +1,15 @@
-.jumbotron {
-    background-image: url(./bg-top.jpg);
+.navbar {
+    backdrop-filter: blur(3px);
+}
+
+.top-cover {
+    height: 100vh;
+    background-image: url(./cover.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
-    min-height: 75vh;
-    height: fit-content;
-    width: 100%;
+    background-position: center;    
+}
+
+.top-cover h1 {
+    font-size: 4em;
 }
