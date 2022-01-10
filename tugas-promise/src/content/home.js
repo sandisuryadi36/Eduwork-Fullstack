@@ -7,6 +7,7 @@ class homeContent {
     loadCards(cards) {
         let cardHTML = ""
         cards.forEach(card => {
+            let d = new Date(card.publishedAt)
             let cardContent = `
             <div class="col">
                 <div class="card">
@@ -14,8 +15,10 @@ class homeContent {
                         src="${card.urlToImage}"
                         alt="">
                     <div class="card-body">
-                        <h4 class="card-title">${card.title}</h4>
+                        <p class="card-text"><small class="text-muted">Source: ${card.source.name}</small></p>
+                        <h4 class="card-title"><a href="${card.url}" target="_blank">${card.title}</a></h4>
                         <p class="card-text">${card.description}</p>
+                        <p class="card-text"><small class="text-muted">Published at: ${d.toDateString()}</small></p>
                     </div>
                 </div>
             </div>
