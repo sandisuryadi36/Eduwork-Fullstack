@@ -39,6 +39,11 @@ class loadContent {
     }
 
     render(element) {
+        element.innerHTML = `
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        `
         fetch(this.url).then(data => data.json()).then(dataJSON => {
             let result = ""
             if (dataJSON.totalResults != 0) {
@@ -47,7 +52,7 @@ class loadContent {
                     cards.push(article)
                 })
                 result = this.loadCards(cards)
-            } else if (dataJSON.status == "ok"){
+            } else if (dataJSON.status == "ok") {
                 result = `<p>No result found</p>`
             }
 
@@ -60,7 +65,7 @@ class loadContent {
         })
             .catch(err => {
                 element.innerHTML = err.message
-        })
+            })
     }
 }
 
