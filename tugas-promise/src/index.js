@@ -22,7 +22,6 @@ function searchNow() {
 document.getElementById("search-btn").addEventListener("click", searchNow)
 
 document.getElementById("search-bar").addEventListener("focus", function () {
-    console.log(document.getElementById("live-search-check").checked)
     if (document.getElementById("live-search-check").checked) {
         document.getElementById("search-bar").addEventListener("keyup", searchNow)
     } else {

@@ -46,7 +46,7 @@ class loadContent {
         `
         fetch(this.url).then(data => data.json()).then(dataJSON => {
             let result = ""
-            if (dataJSON.totalResults != 0) {
+            if (dataJSON.totalResults != 0 && dataJSON.status == "ok") {
                 let cards = []
                 dataJSON.articles.forEach(article => {
                     cards.push(article)
@@ -54,6 +54,8 @@ class loadContent {
                 result = this.loadCards(cards)
             } else if (dataJSON.status == "ok") {
                 result = `<p>No result found</p>`
+            } else if (dataJSON.status == "error") {
+                result = `<p>${dataJSON.message}</p>`
             }
 
             let content =
