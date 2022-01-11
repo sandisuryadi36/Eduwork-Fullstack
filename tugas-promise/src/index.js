@@ -1,6 +1,8 @@
-import homeContent from "./content/home.js"
+import loadContent from "./content/content.js"
 
 const content = document.getElementById("content")
 
-const home = new homeContent("id")
+// render home view
+const home = new loadContent("id", "general","")
 home.render(content)
+

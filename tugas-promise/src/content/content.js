@@ -1,7 +1,17 @@
-class homeContent {
-    constructor(country) {
+class loadContent {
+    constructor(lang, category, q) {
         this.token = "5be7d56373774432b6f59713eebbfdba"
-        this.url = `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${this.token}`
+        if (q != "") {
+            this.url = `https://newsapi.org/v2/everything?q=${q}&language=${lang}&apiKey=${this.token}`
+            this.header = `Shearch result for "${q}"`
+        } else {
+            this.url = `https://newsapi.org/v2/top-headlines?language=${lang}&category=${category}&apiKey=${this.token}`
+            if (category == "general") {
+                this.header = "Headline News"
+            } else {
+                this.header = category.charAt(0).toUpperCase() + category.slice(1)
+            }
+        }
     }
 
     loadCards(cards) {
@@ -30,19 +40,28 @@ class homeContent {
 
     render(element) {
         fetch(this.url).then(data => data.json()).then(dataJSON => {
-            let cards = []
-            dataJSON.articles.forEach(article => {
-                cards.push(article)
-            });
+            let result = ""
+            if (dataJSON.totalResults != 0) {
+                let cards = []
+                dataJSON.articles.forEach(article => {
+                    cards.push(article)
+                })
+                result = this.loadCards(cards)
+            } else if (dataJSON.status == "ok"){
+                result = `<p>No result found</p>`
+            }
 
             let content =
-                `<h1>Headline News</h1>` +
+                `<h1 class="my-3">${this.header}</h1>` +
                 `<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">` +
-                this.loadCards(cards) +
+                result +
                 `</div>`
             element.innerHTML = content
+        })
+            .catch(err => {
+                element.innerHTML = err.message
         })
     }
 }
 
-export default homeContent
+export default loadContent
