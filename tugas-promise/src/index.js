@@ -21,10 +21,16 @@ function searchNow() {
 
 document.getElementById("search-btn").addEventListener("click", searchNow)
 
+let timer
 document.getElementById("search-bar").addEventListener("focus", function () {
     if (document.getElementById("live-search-check").checked) {
-        document.getElementById("search-bar").addEventListener("keyup", searchNow)
+        document.getElementById("search-bar").addEventListener("keyup", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                searchNow()
+            }, 1000)
+        })
     } else {
-        document.getElementById("search-bar").removeEventListener("keyup", searchNow)
+        document.getElementById("search-bar").removeEventListener("keyup", function(){})
     }
 })
