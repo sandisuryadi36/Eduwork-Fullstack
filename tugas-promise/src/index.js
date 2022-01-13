@@ -6,7 +6,7 @@ let category = "general"
 let searchQuery = ""
 let page = 1
 
-// render home view
+// initiation render
 goHome()
 
 function goHome() {
@@ -55,6 +55,7 @@ function nextPage(x) {
     viewContent(lang, category, searchQuery, page)
 }
 
+// category script
 function viewCategory(categoryInput) {
     category = categoryInput
     document.getElementById("search-bar").value=""
@@ -63,6 +64,7 @@ function viewCategory(categoryInput) {
     viewContent(lang, category, searchQuery, page)
 }
 
+// make function accessible from index.html
 window.searchNow= searchNow
 window.prevPage = prevPage
 window.nextPage = nextPage

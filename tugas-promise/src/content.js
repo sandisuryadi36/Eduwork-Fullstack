@@ -1,5 +1,7 @@
 class loadContent {
     constructor(lang, category, q, page) {
+
+        // pilih salah satu token
         // this.token = "5be7d56373774432b6f59713eebbfdba"
         this.token = "48fc76a73f9342b690e5a4bed5e4d1c7"
         this.page = page
@@ -21,6 +23,7 @@ class loadContent {
         }
     }
 
+    // create card view from data
     loadCards(cards) {
         let cardHTML = ""
         cards.forEach(card => {
@@ -45,6 +48,7 @@ class loadContent {
         return cardHTML
     }
 
+    // render content
     render(element) {
         element.innerHTML = `
             <div class="spinner-border text-primary" role="status">
@@ -59,8 +63,10 @@ class loadContent {
                     cards.push(article)
                 })
 
-                function pageView(page) {
+                function pageNav(page) {
                     let view = ""
+
+                    // previous button
                     if (page != 1) {
                         view += `
                         <li class="page-item" onclick="prevPage(${page-1})">
@@ -75,6 +81,7 @@ class loadContent {
                         `
                     }
 
+                    // number before navigation
                     let s
                     if (page - 2 <= 1) {
                         s = 1
@@ -84,13 +91,16 @@ class loadContent {
                         <li class="page-item" onclick="prevPage(${i})"><a class="page-link" href="#">${i}</a></li>`
                     }
 
+                    // current page
                     view += `<li class="page-item active"><a class="page-link">${page}</a></li>`
 
+                    // number after navigation
                     for (let i = page; i < page + 2; i++){
                         if ((dataJSON.totalResults - (i * 20)) > 0) {
                             view += `<li class="page-item"><a class="page-link" href="#" onclick="nextPage(${i+1})">${i+1}</a></li>`
                         }
                     }
+                    // next button
                     if ((dataJSON.totalResults - (page*20)) > 0) {
                         view += `
                             <li class="page-item" onclick="nextPage(${page+1})">
@@ -107,11 +117,12 @@ class loadContent {
                     return view
                 }
 
+                // create pagination element
                 function pagination(page) {
                     let view = `
                     <nav aria-label="Page navigation" class="container" id="pagination">
                         <ul class="pagination pagination-sm justify-content-end">
-                            ${pageView(page)}
+                            ${pageNav(page)}
                         </ul>
                     </nav>
                     `
@@ -125,8 +136,10 @@ class loadContent {
                 result += pagination(this.page)
 
             } else if (dataJSON.status == "ok") {
+                // request success but no result
                 result = `<p>No result found</p>`
             } else if (dataJSON.status == "error") {
+                // request error
                 result = `<p>${dataJSON.message}</p>`
             }
 
